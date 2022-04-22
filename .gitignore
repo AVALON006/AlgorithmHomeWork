@@ -54,3 +54,6 @@ dkms.conf
 
 # for java
 *.class
+
+# vscode
+.vscode/

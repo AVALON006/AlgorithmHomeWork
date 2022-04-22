@@ -74,3 +74,50 @@ void MergeSort(int* arr,int len){
     mergeSortSize[0]=1;
     PartMergeSort(arr,0,len);
 }
+
+int quickSortTimes;
+int* quickSortSize;
+
+int partition(int* arr,int s,int e){
+    int i=s,j=e-1;
+    int temp=arr[s];
+    while(1){
+        while(i<e&&arr[i]<=temp){
+            quickSortTimes++;
+            i++;
+        }
+        while(j>s&&arr[j]>=temp){
+            quickSortTimes++;
+            j--;
+        }
+        if(i<j){
+            int t=arr[i];
+            arr[i]=arr[j];
+            arr[j]=t;
+        }else{
+            break;
+        }
+    }
+    arr[s]=arr[j];
+    arr[j]=temp;
+    return j;
+}
+
+void PartQuickSort(int* arr,int s,int e){
+    //[s,e)
+    quickSortSize[quickSortSize[0]++]=e-s;
+    if(e-s<=1){
+        return;
+    }
+    int p=partition(arr,s,e);
+    //arr[p]处的元素已经确定最终位置
+    PartQuickSort(arr,s,p);
+    PartQuickSort(arr,p+1,e);
+}
+
+void QuickSort(int* arr,int len){
+    quickSortTimes=0;
+    quickSortSize=(int*)malloc(sizeof(int)*(len*2+1));
+    quickSortSize[0]=1;
+    PartQuickSort(arr,0,len);
+}
