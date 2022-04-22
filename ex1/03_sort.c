@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void BubbleSort(int* arr,int len,int* times){
-    *times=0;
+int bubbleSortTimes;
+
+void BubbleSort(int* arr,int len){
+    bubbleSortTimes=0;
     int swap=1;
     int i,temp,newBound;
     int bound=len;
@@ -11,7 +13,7 @@ void BubbleSort(int* arr,int len,int* times){
         swap=0;
 //        printf("bound=%d\n",bound);
         for(i=0;i<bound-1;i++){
-            (*times)=(*times)+1;
+            bubbleSortTimes++;
             if(arr[i]>arr[i+1]){
                 temp=arr[i];
                 arr[i]=arr[i+1];
