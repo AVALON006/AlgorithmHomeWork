@@ -32,8 +32,7 @@ int* RandomArr(int n,int floor,int ceil){
     return arr;
 }
 
-int main() 
-{
+void testBubbleSort(){
     int n,floor,ceil;
     printf("请输入数组长度：");
     scanf("%d",&n);
@@ -56,5 +55,32 @@ int main()
     printf("\n排序后\n");
     printArr(arr,n);
     free(arr);
+}
+
+int main() 
+{
+    int n,floor,ceil;
+    printf("请输入数组长度：");
+    scanf("%d",&n);
+    fflush(stdin);
+    printf("请输入随机数范围（0 100）：");
+    int success=scanf("%d %d",&floor,&ceil);
+    if(success!=2){
+        floor=0;
+        ceil=100;
+    }
+    
+    printf("floor=%d,ceil=%d\n",floor,ceil);
+    
+    int* arr=RandomArr(n,floor,ceil);
+    printf("\n排序前\n");
+    printArr(arr,n);
+    MergeSort(arr,n);
+    printf("\n总共比较次数=%d\n问题规模：",mergeSortTimes);
+    printArr(mergeSortSize,mergeSortSize[0]);
+    printf("\n排序后\n");
+    printArr(arr,n);
+    free(arr);
+    free(mergeSortSize);
     return 0;
 }

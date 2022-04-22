@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void BubbleSort(int* arr,int len,int* times){
     *times=0;
@@ -21,4 +22,55 @@ void BubbleSort(int* arr,int len,int* times){
         }
         bound=newBound;
     }
+}
+
+int mergeSortTimes;
+int* mergeSortSize;
+
+void MergeList(int* arr,int s1,int e1,int s2,int e2){
+    //由合并排序的划分方法可知，合并的两个列表必然连着
+    int* temp=malloc(sizeof(int)*e2-s1);
+    int i=s1,j=s2,k=0;
+    while(i<e1&&j<e2){
+        mergeSortTimes++;
+        if(arr[i]<arr[j]){
+            temp[k++]=arr[i++];
+        }else{
+            temp[k++]=arr[j++];
+        }
+    }
+    while(i<e1){
+        temp[k++]=arr[i++];
+    }
+    while(j<e2){
+        temp[k++]=arr[j++];
+    }
+    i=0;j=s1;
+    while(j<e2){
+        arr[j++]=temp[i++];
+    }
+    free(temp);
+}
+
+void PartMergeSort(int* arr,int s,int e){
+    //[s,e)
+    mergeSortSize[mergeSortSize[0]++]=e-s;
+//    mergeSortSize[mergeSortSize[0]++]=e;
+    //printf("s=%d e=%d\n",s,e);
+    int i;
+    if(e-s<=1){
+        return;
+    }
+    int m=(s+e)/2;
+    PartMergeSort(arr,s,m);
+    PartMergeSort(arr,m,e);
+    //printf("s=%d m=%d e=%d\n",s,m,e);
+    MergeList(arr,s,m,m,e);
+}
+
+void MergeSort(int* arr,int len){
+    mergeSortTimes=0;
+    mergeSortSize=(int*)malloc(sizeof(int)*(len*2+1));
+    mergeSortSize[0]=1;
+    PartMergeSort(arr,0,len);
 }
