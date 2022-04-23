@@ -59,4 +59,4 @@ dkms.conf
 .vscode/
 
 # output data
-data.txt
+data*.txt

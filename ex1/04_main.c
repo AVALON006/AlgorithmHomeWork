@@ -30,7 +30,6 @@ void printArr(int* arr,int n){
 int* RandomArr(int n,int floor,int ceil){
     int* arr=malloc(sizeof(int)*n);
     int i;
-    InitRandom();
     for(i=0;i<n;i++){
         int num=Random();
         if(num<0){
@@ -70,9 +69,9 @@ void testSort(void(*Sort)(int* arr,int len),int n,int floor,int ceil){
     free(arr);
 }
 
-int main() 
-{
-    int n,floor,ceil;
+void test(char* filename,int n){
+    seed=time(NULL)*a;
+    int floor,ceil;
     // printf("请输入数组长度：");
     // scanf("%d",&n);
     // fflush(stdin);
@@ -82,8 +81,8 @@ int main()
     //     floor=0;
     //     ceil=100;
     // }
-    n=100;floor=-1000;ceil=1000;
-    FILE* fp=fopen("data.txt","w");
+    floor=-1000;ceil=1000;
+    FILE* fp=fopen(filename,"w");
     fprintf(fp,"n=%d floor=%d ceil=%d\n",n,floor,ceil);
 
     //printf(line);
@@ -125,5 +124,24 @@ int main()
 
     free(mergeSortSize);
     free(quickSortSize);
+}
+
+int main() 
+{
+    InitRandom();
+    test("data1.txt",100);
+    test("data2.txt",100);
+
+    test("data3.txt",1000);
+    test("data4.txt",3000);
+    test("data5.txt",5000);
+    test("data6.txt",7000);
+    test("data7.txt",9000);
+    test("data8.txt",10000);
+    test("data9.txt",12000);
+    test("data10.txt",14000);
+    test("data11.txt",16000);
+    test("data12.txt",18000);
+    test("data13.txt",20000);
     return 0;
 }

@@ -1,0 +1,41 @@
+import re
+
+def readData(filename):   
+    data=open(filename,encoding="utf-8")
+    basic_config=data.readline()
+    line=data.readline()
+    name=data.readline().split()
+    before=data.readline()
+    arr_data=data.readline()
+    after=data.readline()
+    sort_arr_data=data.readline()
+    bubble_sort_times=data.readline()
+    line=data.readline()
+    name.append(data.readline().split()[0])
+    before=data.readline()
+    arr_data=data.readline()
+    after=data.readline()
+    sort_arr_data=data.readline()
+    merge_sort_times=data.readline()
+    merge_sort_scale=data.readline()
+    line=data.readline()
+    name.append(data.readline().split()[0])
+    before=data.readline()
+    arr_data=data.readline()
+    after=data.readline()
+    sort_arr_data=data.readline()
+    quick_sort_times=data.readline()
+    quick_sort_scale=data.readline()
+    
+    
+    bconfig=list(map(int,re.findall(r"\-?\d+",basic_config)))
+    n=int(bconfig[0]);floor=int(bconfig[1]);ceil=int(bconfig[2]);
+    adata=list(map(int,arr_data.split()))
+    sadata=list(map(int,sort_arr_data.split()))
+    bstimes=int(re.findall(r"\d+",bubble_sort_times)[0])
+    mstimes=int(re.findall(r"\d+",merge_sort_times)[0])
+    qstimes=int(re.findall(r"\d+",quick_sort_times)[0])
+    msscale=list(map(int,re.findall(r"\-?\d+",merge_sort_scale)))
+    qsscale=list(map(int,re.findall(r"\-?\d+",quick_sort_scale)))
+    data.close()
+    return n,floor,ceil,name,adata,sadata,bstimes,mstimes,qstimes,msscale,qsscale
