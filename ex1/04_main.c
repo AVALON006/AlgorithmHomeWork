@@ -106,7 +106,7 @@ void test(char* filename,int n){
     //printf("合并排序问题规模：");
     fprintf(fp,"合并排序问题规模：");
     //printArr(&mergeSortSize[1],mergeSortSize[0]);
-    fprintArr(fp,&mergeSortSize[1],mergeSortSize[0]);
+    fprintArr(fp,&mergeSortSize[1],mergeSortSize[0]-1);
 
     //printf(line);
     fprintf(fp,line);
@@ -120,7 +120,7 @@ void test(char* filename,int n){
     //printf("快速排序问题规模：");
     fprintf(fp,"快速排序问题规模：");
     //printArr(&quickSortSize[1],quickSortSize[0]);
-    fprintArr(fp,&quickSortSize[1],quickSortSize[0]);
+    fprintArr(fp,&quickSortSize[1],quickSortSize[0]-1);
 
     free(mergeSortSize);
     free(quickSortSize);

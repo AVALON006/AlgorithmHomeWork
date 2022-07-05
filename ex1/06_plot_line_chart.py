@@ -5,7 +5,7 @@ import os
 
 mpl.rcParams['font.sans-serif'] = ['SimHei'] # 指定默认字体
 
-if(os.getcwd().find("ex1")==1):
+if(os.getcwd().find("ex1")==-1):
     data3=readData(".\\ex1\\data3.txt")
     data4=readData(".\\ex1\\data4.txt")
     data5=readData(".\\ex1\\data5.txt")
@@ -44,6 +44,75 @@ scale.append(data11[0]);bstimes.append(data11[6]);mstimes.append(data11[7]);qsti
 scale.append(data12[0]);bstimes.append(data12[6]);mstimes.append(data12[7]);qstimes.append(data12[8])
 scale.append(data13[0]);bstimes.append(data13[6]);mstimes.append(data13[7]);qstimes.append(data13[8])
 name=data3[3]
+
+mscale=[]
+ms1=[];ms2=[];ms3=[];ms4=[];ms5=[];ms6=[];ms7=[];ms8=[];ms9=[];ms10=[];ms11=[]
+lastS=scale[0]
+for s in data3[9]:
+    if lastS<s:
+        break
+    ms1.append(s)
+    lastS=s
+lastS=scale[1]
+for s in data4[9]:
+    if lastS<s:
+        break
+    ms2.append(s)
+    lastS=s
+lastS=scale[2]
+for s in data5[9]:
+    if lastS<s:
+        break
+    ms3.append(s)
+    lastS=s
+lastS=scale[3]
+for s in data6[9]:
+    if lastS<s:
+        break
+    ms4.append(s)
+    lastS=s
+lastS=scale[4]
+for s in data7[9]:
+    if lastS<s:
+        break
+    ms5.append(s)
+    lastS=s
+lastS=scale[5]
+for s in data8[9]:
+    if lastS<s:
+        break
+    ms6.append(s)
+    lastS=s
+lastS=scale[6]
+for s in data9[9]:
+    if lastS<s:
+        break
+    ms7.append(s)
+    lastS=s
+lastS=scale[7]
+for s in data10[9]:
+    if lastS<s:
+        break
+    ms8.append(s)
+    lastS=s
+lastS=scale[8]
+for s in data11[9]:
+    if lastS<s:
+        break
+    ms9.append(s)
+    lastS=s
+lastS=scale[9]
+for s in data12[9]:
+    if lastS<s:
+        break
+    ms10.append(s)
+    lastS=s
+lastS=scale[10]
+for s in data13[9]:
+    if lastS<s:
+        break
+    ms11.append(s)
+    lastS=s
 
 plt.figure(name[0])
 plt.plot(scale,bstimes,'ro-',label=name[0])
